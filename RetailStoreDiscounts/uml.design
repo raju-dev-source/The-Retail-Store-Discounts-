@@ -1,0 +1,111 @@
+---------------------------------
+|          DiscountController   |
+---------------------------------
+| - discountService: DiscountService |
+---------------------------------
+| + DiscountController(discountService: DiscountService) |
+| + getNetPayableAmount(bill: Bill): ResponseEntity<Double> |
+---------------------------------
+
+           ^
+           |
+           |
+           |
+           | 1
+           |
+
+---------------------------------
+|          DiscountService      |
+---------------------------------
+| - discountCalculator: DiscountCalculator |
+---------------------------------
+| + DiscountService(discountCalculator: DiscountCalculator) |
+| + calculateNetPayableAmount(bill: Bill): double |
+---------------------------------
+
+           ^
+           |
+           |
+           |
+           | 1
+           |
+
+---------------------------------
+|        DiscountServiceImpl    |
+---------------------------------
+| - discountCalculator: DiscountCalculator |
+---------------------------------
+| + DiscountServiceImpl(discountCalculator: DiscountCalculator) |
+| + calculateNetPayableAmount(bill: Bill): double |
+---------------------------------
+
+           ^
+           |
+           |
+           |
+           | 1
+           |
+
+---------------------------------
+|        DiscountCalculator    |
+---------------------------------
+---------------------------------
+| + calculateDiscount(bill: Bill): double |
+---------------------------------
+
+           ^
+           |
+           |
+           |
+           | 1
+           |
+
+---------------------------------
+|              Bill             |
+---------------------------------
+| - totalAmount: double         |
+| - user: User                  |
+---------------------------------
+| + Bill(totalAmount: double, user: User) |
+| + getTotalAmount(): double    |
+| + getUser(): User             |
+---------------------------------
+
+           ^
+           |
+           |
+           |
+           | 1
+           |
+
+---------------------------------
+|              User             |
+---------------------------------
+| - userId: Long                |
+| - userType: UserType         |
+| - registrationDate: LocalDate |
+---------------------------------
+| + User(userId: Long, userType: UserType, registrationDate: LocalDate) |
+| + getUserId(): Long           |
+| + getUserType(): UserType    |
+| + getRegistrationDate(): LocalDate |
+---------------------------------
+
+---------------------------------
+|           UserType            |
+---------------------------------
+| - EMPLOYEE                    |
+| - AFFILIATE                   |
+| - CUSTOMER                    |
+---------------------------------
+| + EMPLOYEE                    |
+| + AFFILIATE                   |
+| + CUSTOMER                    |
+---------------------------------
+
+---------------------------------
+|            Logger             |
+---------------------------------
+| - info(message: String, args: Object...): void |
+| - error(message: String, throwable: Throwable): void |
+---------------------------------

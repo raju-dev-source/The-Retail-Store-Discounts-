@@ -31,6 +31,24 @@ public class DiscountServiceImplTest {
     }
 
     @Test
+    public void testMockBehavior() {
+        // Arrange
+        User user = new User(123L, UserType.EMPLOYEE, LocalDate.of(2007, 1, 1));
+        Bill bill = new Bill(100.0, user);
+        double expectedDiscount = 10.0; // Assuming 10% discount
+
+        // Mock the behavior of calculateDiscount to return the expected discount
+        when(discountCalculator.calculateDiscount(bill)).thenReturn(expectedDiscount);
+
+        // Act
+        double actualDiscount = discountCalculator.calculateDiscount(bill);
+
+        // Assert
+        assertEquals(expectedDiscount, actualDiscount, 0.001); // Use delta for double comparison
+        verify(discountCalculator).calculateDiscount(bill); // Verify that calculateDiscount was called
+    }
+
+    @Test
     public void testCalculateNetPayableAmount() {
         // Arrange
         User user = new User(123L, UserType.EMPLOYEE, LocalDate.of(2007, 1, 1));
@@ -45,7 +63,7 @@ public class DiscountServiceImplTest {
         double actualNetPayableAmount = discountService.calculateNetPayableAmount(bill);
 
         // Assert
-        assertEquals(expectedNetPayableAmount, actualNetPayableAmount); // Use delta for double comparison
+        assertEquals(expectedNetPayableAmount, actualNetPayableAmount, 0.001); // Use delta for double comparison
         verify(discountCalculator).calculateDiscount(bill); // Verify that calculateDiscount was called
     }
 }

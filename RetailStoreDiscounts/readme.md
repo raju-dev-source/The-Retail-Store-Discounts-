@@ -82,6 +82,9 @@ Content-Type: application/json
 The application handles errors gracefully with appropriate HTTP status codes and error messages.
 Logs errors and exceptions for easier troubleshooting and debugging.
 
+# Uml Design
+![image](https://github.com/user-attachments/assets/674c9d1d-8eca-4d7d-a0b1-b55f0a1f65af)
+
 # Future Improvements
 Implement grocery check logic to differentiate groceries from other items.
 Enhance security and validation for input data.
